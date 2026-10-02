@@ -1,0 +1,246 @@
+/* ── Farben & Grundwerte ─────────────────────────────────────── */
+:root {
+  --bg: #fbfaf3;
+  --surface: #ffffff;
+  --text: #1b1b18;
+  --muted: #5f5f58;
+  --line: #e4e1d4;
+  --accent: #2f6b4f;
+  --accent-contrast: #ffffff;
+  --accent-soft: #e5efe7;
+  --ph-s: 38%;
+  --ph-l1: 86%;
+  --ph-l2: 72%;
+  --ph-text: rgb(0 0 0 / .16);
+  --shadow: 0 12px 30px -16px rgb(0 0 0 / .3);
+
+  --radius: 14px;
+  --wrap: 72rem;
+  --prose: 42rem;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141513;
+    --surface: #1c1d1a;
+    --text: #ecebe4;
+    --muted: #a7a69d;
+    --line: #30312c;
+    --accent: #8fcaa8;
+    --accent-contrast: #10221a;
+    --accent-soft: #1f2d25;
+    --ph-s: 25%;
+    --ph-l1: 30%;
+    --ph-l2: 21%;
+    --ph-text: rgb(255 255 255 / .18);
+    --shadow: 0 12px 30px -16px rgb(0 0 0 / .8);
+    color-scheme: dark;
+  }
+}
+
+/* ── Basis ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 1.0625rem/1.65 var(--font);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-weight: 600; overflow-wrap: break-word; hyphens: auto; }
+h1, h2 { font-family: var(--font-display); letter-spacing: -.01em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+.muted { color: var(--muted); }
+.lead { font-size: 1.2rem; color: var(--muted); }
+.eyebrow {
+  margin-bottom: .75rem;
+  font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.skip-link { position: absolute; left: -999px; top: .5rem; z-index: 10; padding: .5rem 1rem; background: var(--surface); }
+.skip-link:focus { left: .5rem; }
+
+/* ── Kopfzeile ───────────────────────────────────────────────── */
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 2rem; padding-block: 1.1rem; }
+.brand { margin-right: auto; font-weight: 700; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+.nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.nav a {
+  padding-block: .25rem;
+  font-size: .95rem; color: var(--text); text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { border-color: var(--line); }
+.nav a[aria-current="page"] { border-color: var(--accent); }
+@media (max-width: 860px) {
+  .nav { order: 3; flex-basis: 100%; }
+}
+
+.social { display: flex; gap: .5rem; }
+.social a {
+  display: inline-grid; place-items: center;
+  width: 2.25rem; height: 2.25rem;
+  color: var(--text); border: 1px solid var(--line); border-radius: 50%;
+}
+.social a:hover { color: var(--accent); border-color: var(--accent); }
+.social svg { width: 1.05rem; height: 1.05rem; }
+
+/* ── Startseite ──────────────────────────────────────────────── */
+.hero {
+  display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: 2rem 4rem; padding-block: clamp(3rem, 8vw, 6rem);
+}
+.hero h1 { margin-bottom: .2em; }
+.hero-sub { font-size: 1.25rem; color: var(--muted); }
+.hero-bio { max-width: 38rem; }
+.hero-bio code { font-size: .9em; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.avatar { width: clamp(9rem, 22vw, 15rem); aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
+.avatar-ph {
+  display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent);
+  font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600;
+}
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-avatar { order: -1; }
+}
+
+.btn {
+  display: inline-block; padding: .7rem 1.3rem;
+  font-weight: 600; text-decoration: none;
+  color: var(--accent-contrast); background: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn-ghost { color: var(--accent); background: transparent; }
+
+.section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.section-head {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+  gap: .5rem 1rem; margin-bottom: 1.5rem;
+}
+.section-head h2 { margin: 0; }
+.page-head { max-width: var(--prose); margin-bottom: 2.5rem; }
+
+/* ── Karten ──────────────────────────────────────────────────── */
+.card-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 1.5rem; margin: 0; padding: 0; list-style: none;
+}
+.card {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.card-media { aspect-ratio: 4 / 3; overflow: hidden; }
+.card-media img, .ph { width: 100%; height: 100%; object-fit: cover; }
+.ph {
+  display: grid; place-items: center;
+  background: linear-gradient(135deg,
+    hsl(var(--hue) var(--ph-s) var(--ph-l1)),
+    hsl(calc(var(--hue) + 35) var(--ph-s) var(--ph-l2)));
+}
+.ph span { font-family: var(--font-display); font-size: 4rem; font-weight: 600; color: var(--ph-text); }
+.card-body { display: flex; flex-direction: column; flex: 1; gap: .4rem; padding: 1.1rem 1.25rem 1.4rem; }
+.card-body p { margin: 0; font-size: .97rem; color: var(--muted); }
+.card-title { margin: 0; font-family: var(--font-display); font-size: 1.25rem; }
+.card-title a { color: var(--text); text-decoration: none; }
+.card-title a:focus-visible { outline: none; }
+.card-title a::after { content: ""; position: absolute; inset: 0; }   /* ganze Karte klickbar */
+.card:hover .card-title a, .post-row:hover .card-title a { color: var(--accent); }
+.more { margin-top: auto; padding-top: .5rem; font-size: .95rem; font-weight: 600; color: var(--accent); }
+.date { margin: 0; font-size: .85rem; color: var(--muted); }
+
+/* ── Blogliste ───────────────────────────────────────────────── */
+.post-list { display: grid; gap: 1.25rem; max-width: 52rem; margin: 0; padding: 0; list-style: none; }
+.post-row {
+  position: relative; display: grid; grid-template-columns: 12rem 1fr; align-items: center; gap: .5rem 1.5rem;
+  padding: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.post-row:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.post-row .card-media { border-radius: calc(var(--radius) - 6px); }
+.post-row .card-body { padding: 0; }
+@media (max-width: 560px) { .post-row { grid-template-columns: 1fr; } }
+
+/* ── Referenzen ──────────────────────────────────────────────── */
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1.5rem; }
+.quote { margin: 0; padding: 1.75rem; background: var(--accent-soft); border-radius: var(--radius); }
+.quote blockquote { margin: 0 0 1rem; font-family: var(--font-display); font-size: 1.3rem; line-height: 1.4; }
+.quote blockquote p { margin: 0; }
+.quote figcaption { display: flex; flex-direction: column; font-size: .95rem; }
+.quote figcaption span { color: var(--muted); }
+
+/* ── Textseiten (Kompetenzen, Blogbeiträge) ──────────────────── */
+.prose { max-width: var(--prose); padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.prose h2 { margin-top: 2em; font-size: 1.6rem; }
+.prose img { margin-block: 1.5rem; border-radius: var(--radius); }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose blockquote { margin: 1.5rem 0; padding-left: 1rem; color: var(--muted); border-left: 3px solid var(--accent); }
+.prose code { padding: .1em .35em; font-size: .9em; background: var(--accent-soft); border-radius: 4px; }
+.prose pre { overflow-x: auto; padding: 1rem; background: var(--accent-soft); border-radius: 8px; }
+.prose pre code { padding: 0; background: none; }
+.back { display: inline-block; margin-bottom: 1.5rem; font-size: .95rem; text-decoration: none; }
+.back:hover { text-decoration: underline; }
+.hero-img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.pager {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+  margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+}
+.pager .next { margin-left: auto; text-align: right; }
+
+/* ── Lebenslauf ──────────────────────────────────────────────── */
+.cv { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.cv-head {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem;
+  padding-bottom: 2rem; border-bottom: 1px solid var(--line);
+}
+.cv-head .lead { margin: 0; }
+.cv-section {
+  display: grid; grid-template-columns: 14rem 1fr; gap: 1rem 2rem;
+  padding-block: 2rem; border-bottom: 1px solid var(--line);
+}
+.cv-section h2 { font-size: 1.35rem; }
+.timeline { display: grid; gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.timeline li { display: grid; grid-template-columns: 9rem 1fr; gap: .25rem 1.5rem; }
+.timeline h3 { margin: 0 0 .15rem; }
+.timeline p { margin: 0 0 .3rem; }
+.when { padding-top: .1rem; font-size: .95rem; font-variant-numeric: tabular-nums; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.tags li { padding: .35rem .85rem; font-size: .95rem; background: var(--accent-soft); border-radius: 999px; }
+@media (max-width: 760px) { .cv-section { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .timeline li { grid-template-columns: 1fr; } }
+
+/* ── Fusszeile ───────────────────────────────────────────────── */
+.site-footer { margin-top: 3rem; padding-block: 2.5rem 1.5rem; border-top: 1px solid var(--line); }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
+.footer-inner p { margin: 0; }
+.footer-name { font-weight: 700; }
+.footer-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.footer-meta { margin-top: 2rem; font-size: .85rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card:hover { transform: none; }
+}
+
+/* Lebenslauf sauber drucken / als PDF speichern */
+@media print {
+  .site-header, .site-footer, .btn { display: none; }
+  body { background: #fff; color: #000; }
+}

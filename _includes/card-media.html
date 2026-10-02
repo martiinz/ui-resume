@@ -1,0 +1,11 @@
+{%- comment -%}
+  Bild einer Karte. Ohne "image" im Front Matter erscheint ein farbiger Platzhalter.
+  Parameter: image, title, index
+{%- endcomment -%}
+<div class="card-media">
+  {% if include.image and include.image != "" %}
+    <img src="{{ include.image | relative_url }}" alt="" loading="lazy">
+  {% else %}
+    <div class="ph" style="--hue: {{ include.index | times: 24 | plus: 75 }}" aria-hidden="true"><span>{{ include.title | slice: 0 }}</span></div>
+  {% endif %}
+</div>

@@ -1,0 +1,54 @@
+# ── Deine Angaben ───────────────────────────────────────────────
+title: "Max Muster – Webseitenportfolio"
+description: "Portfolio und Lebenslauf von Max Muster, Bachelor in Umweltingenieurwesen."
+lang: de
+
+author:
+  name: "Max Muster"
+  studiengang: "Bachelor in Umweltingenieurwesen"
+  email: "max.muster@example.ch"
+  linkedin: "https://www.linkedin.com/"   # dein Profil-Link, oder leer lassen
+  avatar: ""      # z. B. /assets/img/portrait.jpg – leer = Initialen
+  cv_pdf: ""      # z. B. /assets/lebenslauf.pdf – leer = kein Download-Button
+
+# Bei GitHub Pages setzt der Workflow baseurl automatisch.
+url: ""
+baseurl: ""
+
+# ── Inhalte ─────────────────────────────────────────────────────
+collections:
+  nachhaltigkeit:
+    output: true
+    permalink: /nachhaltigkeitskompetenzen/:name/
+    sort_by: order
+    title: Nachhaltigkeitskompetenzen
+    overview: /nachhaltigkeitskompetenzen/
+  kernkompetenzen:
+    output: true
+    permalink: /kernkompetenzen/:name/
+    sort_by: order
+    title: Kernkompetenzen
+    overview: /kernkompetenzen/
+
+permalink: /blog/:year/:month/:title/
+
+defaults:
+  - scope: { path: "", type: nachhaltigkeit }
+    values: { layout: kompetenz }
+  - scope: { path: "", type: kernkompetenzen }
+    values: { layout: kompetenz }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+
+# ── Technik ─────────────────────────────────────────────────────
+plugins:
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github

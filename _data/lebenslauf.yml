@@ -1,0 +1,31 @@
+# Jeder Abschnitt hat einen Titel und entweder "eintraege" (Zeitleiste)
+# oder "liste" (Stichworte). Abschnitte einfach kopieren, löschen oder umsortieren.
+
+- titel: Ausbildung
+  eintraege:
+    - zeitraum: "2024 – heute"
+      titel: "BSc Umweltingenieurwesen"
+      ort: "ZHAW, Wädenswil"
+      text: "Vertiefung: …"
+    - zeitraum: "2020 – 2024"
+      titel: "Gymnasiale Maturität"
+      ort: "Kantonsschule …"
+
+- titel: Berufserfahrung
+  eintraege:
+    - zeitraum: "Sommer 2025"
+      titel: "Praktikum …"
+      ort: "Firma, Ort"
+      text: "Kurz beschreiben, was du gemacht und gelernt hast."
+
+- titel: Sprachen
+  liste:
+    - "Deutsch – Muttersprache"
+    - "Englisch – C1"
+    - "Französisch – B1"
+
+- titel: Kenntnisse
+  liste:
+    - "GIS (QGIS, ArcGIS Pro)"
+    - "R / Python"
+    - "Microsoft Office"

@@ -1,0 +1,44 @@
+---
+title: Lebenslauf
+layout: default
+permalink: /lebenslauf/
+---
+{%- comment -%} Inhalt kommt aus _data/lebenslauf.yml {%- endcomment -%}
+<article class="wrap cv">
+  <header class="cv-head">
+    <div>
+      <h1>Lebenslauf</h1>
+      <p class="lead">{{ site.author.name }} · {{ site.author.studiengang }}</p>
+    </div>
+    {% if site.author.cv_pdf and site.author.cv_pdf != "" %}
+      <a class="btn" href="{{ site.author.cv_pdf | relative_url }}">PDF herunterladen</a>
+    {% endif %}
+  </header>
+
+  {% for abschnitt in site.data.lebenslauf %}
+  <section class="cv-section">
+    <h2>{{ abschnitt.titel }}</h2>
+    <div>
+      {% if abschnitt.eintraege %}
+      <ol class="timeline">
+        {% for e in abschnitt.eintraege %}
+        <li>
+          <p class="when">{{ e.zeitraum }}</p>
+          <div>
+            <h3>{{ e.titel }}</h3>
+            {% if e.ort %}<p class="muted">{{ e.ort }}</p>{% endif %}
+            {% if e.text %}<p>{{ e.text }}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+      {% if abschnitt.liste %}
+      <ul class="tags">
+        {% for t in abschnitt.liste %}<li>{{ t }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </section>
+  {% endfor %}
+</article>

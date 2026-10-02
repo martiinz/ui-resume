@@ -1,0 +1,23 @@
+---
+title: Blog
+layout: default
+permalink: /blog/
+---
+<section class="wrap section">
+  <header class="page-head">
+    <h1>Blog</h1>
+    <p class="lead">Projekte, Exkursionen und Gedanken aus dem Studium.</p>
+  </header>
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-row">
+      {% include card-media.html image=post.image title=post.title index=forloop.index0 %}
+      <div class="card-body">
+        <p class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d.%m.%Y" }}</time></p>
+        <h2 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

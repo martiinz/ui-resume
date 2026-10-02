@@ -1,0 +1,6 @@
+{% if site.author.avatar and site.author.avatar != "" %}
+  <img class="avatar" src="{{ site.author.avatar | relative_url }}" alt="Porträt von {{ site.author.name }}">
+{% else %}
+  {% assign parts = site.author.name | split: " " %}
+  <div class="avatar avatar-ph" aria-hidden="true">{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}</div>
+{% endif %}

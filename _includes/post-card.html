@@ -1,0 +1,10 @@
+{%- comment -%} Parameter: post, index {%- endcomment -%}
+<li class="card">
+  {% include card-media.html image=include.post.image title=include.post.title index=include.index %}
+  <div class="card-body">
+    <p class="date"><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%d.%m.%Y" }}</time></p>
+    <h3 class="card-title"><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+    <p>{{ include.post.excerpt | strip_html | truncatewords: 22 }}</p>
+    <span class="more" aria-hidden="true">Weiterlesen →</span>
+  </div>
+</li>

@@ -1,0 +1,12 @@
+{%- comment -%} Parameter: items (eine Collection, z. B. site.nachhaltigkeit) {%- endcomment -%}
+<ul class="card-grid">
+  {% for item in include.items %}
+  <li class="card">
+    {% include card-media.html image=item.image title=item.title index=forloop.index0 %}
+    <div class="card-body">
+      <h2 class="card-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h2>
+      <p>{{ item.summary }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

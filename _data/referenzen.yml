@@ -1,0 +1,7 @@
+# Zitate für die Startseite. Leere Liste ([]) blendet den Abschnitt aus.
+- zitat: "Max hat im Projekt Verantwortung übernommen und komplexe Daten verständlich aufbereitet."
+  name: "Dr. Erika Beispiel"
+  rolle: "Dozentin, ZHAW"
+- zitat: "Zuverlässig, neugierig und ein Gewinn für jedes Team."
+  name: "Hans Vorbild"
+  rolle: "Praktikumsbetreuer"
